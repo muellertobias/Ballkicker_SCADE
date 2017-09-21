@@ -45,6 +45,45 @@
 						<ed:Variable oid="!ed/45d1/5FDA/1A90/59c3791f3491"/>
 					</pragmas>
 				</Variable>
+				<Variable name="KickForward">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<last>
+						<ConstValue value="false"/>
+					</last>
+					<pragmas>
+						<ed:Variable oid="!ed/4c50/3D43/448/59c3a2ac4ef4"/>
+					</pragmas>
+				</Variable>
+				<Variable name="KickBackward">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4cb4/3D43/448/59c3a3412eaf"/>
+					</pragmas>
+				</Variable>
+				<Variable name="KickFinished">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/5084/3D43/448/59c3aac53768"/>
+					</pragmas>
+				</Variable>
 			</inputs>
 			<outputs>
 				<Variable name="CountValue">
@@ -80,19 +119,19 @@
 						<ed:Variable oid="!ed/4695/494F/D94/59b661631cbd"/>
 					</pragmas>
 				</Variable>
-				<Variable name="Output3">
+				<Variable name="ArmSpeedValue">
 					<type>
 						<NamedType>
 							<type>
-								<TypeRef name="bool"/>
+								<TypeRef name="int16"/>
 							</type>
 						</NamedType>
 					</type>
 					<last>
-						<ConstValue value="false"/>
+						<ConstValue value="0"/>
 					</last>
 					<pragmas>
-						<ed:Variable oid="!ed/471b/5FDA/1A90/59c382b644a9"/>
+						<ed:Variable oid="!ed/4501/3D43/448/59c398ba2217"/>
 					</pragmas>
 				</Variable>
 			</outputs>
@@ -115,6 +154,21 @@
 				<Signal name="StopSignal">
 					<pragmas>
 						<ed:Signal oid="!ed/4600/5FDA/1A90/59c379934b2e"/>
+					</pragmas>
+				</Signal>
+				<Signal name="KickForwardSignal">
+					<pragmas>
+						<ed:Signal oid="!ed/4c48/3D43/448/59c3a2a55076"/>
+					</pragmas>
+				</Signal>
+				<Signal name="KickBackwardSignal">
+					<pragmas>
+						<ed:Signal oid="!ed/4cbd/3D43/448/59c3a34f2f2f"/>
+					</pragmas>
+				</Signal>
+				<Signal name="KickFinishedSignal">
+					<pragmas>
+						<ed:Signal oid="!ed/508d/3D43/448/59c3aacf34f2"/>
 					</pragmas>
 				</Signal>
 			</signals>
@@ -149,19 +203,19 @@
 						<ed:Variable oid="!ed/4709/494F/D94/59b661b96298"/>
 					</pragmas>
 				</Variable>
-				<Variable name="Local1">
+				<Variable name="ArmSpeed">
 					<type>
 						<NamedType>
 							<type>
-								<TypeRef name="bool"/>
+								<TypeRef name="int16"/>
 							</type>
 						</NamedType>
 					</type>
 					<last>
-						<ConstValue value="false"/>
+						<ConstValue value="0"/>
 					</last>
 					<pragmas>
-						<ed:Variable oid="!ed/4726/5FDA/1A90/59c382c35d03"/>
+						<ed:Variable oid="!ed/46a1/3D43/448/59c39a0714e0"/>
 					</pragmas>
 				</Variable>
 				<Variable name="_L1">
@@ -234,6 +288,66 @@
 					</type>
 					<pragmas>
 						<ed:Variable oid="!ed/45e6/5FDA/1A90/59c379604f1b"/>
+					</pragmas>
+				</Variable>
+				<Variable name="_L21">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4c52/3D43/448/59c3a2ac5e3d"/>
+					</pragmas>
+				</Variable>
+				<Variable name="_L22">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4cb6/3D43/448/59c3a3411b93"/>
+					</pragmas>
+				</Variable>
+				<Variable name="_L23">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="int16"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/4d16/3D43/448/59c3a3a510cb"/>
+					</pragmas>
+				</Variable>
+				<Variable name="_L25">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="bool"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/5086/3D43/448/59c3aac556e5"/>
+					</pragmas>
+				</Variable>
+				<Variable name="_L26">
+					<type>
+						<NamedType>
+							<type>
+								<TypeRef name="int16"/>
+							</type>
+						</NamedType>
+					</type>
+					<pragmas>
+						<ed:Variable oid="!ed/5172/3D43/448/59c3b65c35b5"/>
 					</pragmas>
 				</Variable>
 			</locals>
@@ -519,244 +633,11 @@
 										<ed:StateMachine oid="!ed/4513/5FDA/1A90/59c3788d1db5"/>
 									</pragmas>
 								</StateMachine>
-								<StateMachine name="Drive">
-									<states>
-										<State name="Drive">
-											<unless>
-												<Transition kind="restart">
-													<target>
-														<StateRef name="Init"/>
-													</target>
-													<condition>
-														<Present>
-															<signal>
-																<SignalRef name="StopSignal"/>
-															</signal>
-														</Present>
-													</condition>
-													<effect>
-														<Action>
-															<data>
-																<!-- Speed = 0; -->
-																<Equation>
-																	<lefts>
-																		<VariableRef name="Speed"/>
-																	</lefts>
-																	<right>
-																		<ConstValue value="0"/>
-																	</right>
-																	<pragmas>
-																		<ed:Equation oid="!ed/4594/5FDA/1A90/59c378e856ac"/>
-																	</pragmas>
-																</Equation>
-															</data>
-															<pragmas>
-																<ed:Action oid="!ed/4593/5FDA/1A90/59c378e87a9d"/>
-															</pragmas>
-														</Action>
-													</effect>
-													<pragmas>
-														<ed:Transition oid="!ed/4592/5FDA/1A90/59c378e860b"/>
-													</pragmas>
-												</Transition>
-											</unless>
-											<locals>
-												<Variable name="_L2">
-													<type>
-														<NamedType>
-															<type>
-																<TypeRef name="int16"/>
-															</type>
-														</NamedType>
-													</type>
-													<pragmas>
-														<ed:Variable oid="!ed/4591/5FDA/1A90/59c378e81d85"/>
-													</pragmas>
-												</Variable>
-												<Variable name="_L4">
-													<type>
-														<NamedType>
-															<type>
-																<TypeRef name="bool"/>
-															</type>
-														</NamedType>
-													</type>
-													<pragmas>
-														<ed:Variable oid="!ed/4866/5FDA/1A90/59c3853f4869"/>
-													</pragmas>
-												</Variable>
-											</locals>
-											<data>
-												<!-- SpeedValue = _L2; -->
-												<Equation>
-													<lefts>
-														<VariableRef name="SpeedValue"/>
-													</lefts>
-													<right>
-														<IdExpression>
-															<path>
-																<ConstVarRef name="_L2"/>
-															</path>
-														</IdExpression>
-													</right>
-													<pragmas>
-														<ed:Equation oid="!ed/458f/5FDA/1A90/59c378e85087"/>
-													</pragmas>
-												</Equation>
-												<!-- _L2 = Speed; -->
-												<Equation>
-													<lefts>
-														<VariableRef name="_L2"/>
-													</lefts>
-													<right>
-														<IdExpression>
-															<path>
-																<ConstVarRef name="Speed"/>
-															</path>
-														</IdExpression>
-													</right>
-													<pragmas>
-														<ed:Equation oid="!ed/4590/5FDA/1A90/59c378e8589b"/>
-													</pragmas>
-												</Equation>
-												<!-- Output3 = _L4; -->
-												<Equation>
-													<lefts>
-														<VariableRef name="Output3"/>
-													</lefts>
-													<right>
-														<IdExpression>
-															<path>
-																<ConstVarRef name="_L4"/>
-															</path>
-														</IdExpression>
-													</right>
-													<pragmas>
-														<ed:Equation oid="!ed/4864/5FDA/1A90/59c3853f2b75"/>
-													</pragmas>
-												</Equation>
-												<!-- _L4 = Local1; -->
-												<Equation>
-													<lefts>
-														<VariableRef name="_L4"/>
-													</lefts>
-													<right>
-														<IdExpression>
-															<path>
-																<ConstVarRef name="Local1"/>
-															</path>
-														</IdExpression>
-													</right>
-													<pragmas>
-														<ed:Equation oid="!ed/4865/5FDA/1A90/59c3853f3b93"/>
-													</pragmas>
-												</Equation>
-											</data>
-											<pragmas>
-												<ed:State oid="!ed/458e/5FDA/1A90/59c378e83830"/>
-											</pragmas>
-										</State>
-										<State initial="true" name="Init">
-											<unless>
-												<Transition kind="restart">
-													<target>
-														<StateRef name="Drive"/>
-													</target>
-													<condition>
-														<Present>
-															<signal>
-																<SignalRef name="StartSignal"/>
-															</signal>
-														</Present>
-													</condition>
-													<effect>
-														<Action>
-															<data>
-																<!-- Speed = 20; -->
-																<Equation>
-																	<lefts>
-																		<VariableRef name="Speed"/>
-																	</lefts>
-																	<right>
-																		<ConstValue value="20"/>
-																	</right>
-																	<pragmas>
-																		<ed:Equation oid="!ed/459b/5FDA/1A90/59c378e8e7a"/>
-																	</pragmas>
-																</Equation>
-															</data>
-															<pragmas>
-																<ed:Action oid="!ed/459a/5FDA/1A90/59c378e81e75"/>
-															</pragmas>
-														</Action>
-													</effect>
-													<pragmas>
-														<ed:Transition oid="!ed/4599/5FDA/1A90/59c378e82c6c"/>
-													</pragmas>
-												</Transition>
-											</unless>
-											<locals>
-												<Variable name="_L2">
-													<type>
-														<NamedType>
-															<type>
-																<TypeRef name="int16"/>
-															</type>
-														</NamedType>
-													</type>
-													<pragmas>
-														<ed:Variable oid="!ed/4598/5FDA/1A90/59c378e86203"/>
-													</pragmas>
-												</Variable>
-											</locals>
-											<data>
-												<!-- _L2 = Speed; -->
-												<Equation>
-													<lefts>
-														<VariableRef name="_L2"/>
-													</lefts>
-													<right>
-														<IdExpression>
-															<path>
-																<ConstVarRef name="Speed"/>
-															</path>
-														</IdExpression>
-													</right>
-													<pragmas>
-														<ed:Equation oid="!ed/4596/5FDA/1A90/59c378e8626"/>
-													</pragmas>
-												</Equation>
-												<!-- SpeedValue = _L2; -->
-												<Equation>
-													<lefts>
-														<VariableRef name="SpeedValue"/>
-													</lefts>
-													<right>
-														<IdExpression>
-															<path>
-																<ConstVarRef name="_L2"/>
-															</path>
-														</IdExpression>
-													</right>
-													<pragmas>
-														<ed:Equation oid="!ed/4597/5FDA/1A90/59c378e8626f"/>
-													</pragmas>
-												</Equation>
-											</data>
-											<pragmas>
-												<ed:State oid="!ed/4595/5FDA/1A90/59c378e889b"/>
-											</pragmas>
-										</State>
-									</states>
-									<pragmas>
-										<ed:StateMachine oid="!ed/458d/5FDA/1A90/59c378e8c4b"/>
-									</pragmas>
-								</StateMachine>
 							</data>
 							<until>
 								<Transition kind="restart">
 									<target>
-										<StateRef name="Stop"/>
+										<StateRef name="Free"/>
 									</target>
 									<condition>
 										<Present>
@@ -768,16 +649,16 @@
 									<effect>
 										<Action>
 											<data>
-												<!-- Local1 = false; -->
+												<!-- Speed = -20; -->
 												<Equation>
 													<lefts>
-														<VariableRef name="Local1"/>
+														<VariableRef name="Speed"/>
 													</lefts>
 													<right>
-														<ConstValue value="false"/>
+														<ConstValue value="-20"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/4944/5FDA/1A90/59c387ef2a19"/>
+														<ed:Equation oid="!ed/519f/3D43/448/59c3b6912540"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -811,16 +692,16 @@
 									<effect>
 										<Action>
 											<data>
-												<!-- Local1 = true; -->
+												<!-- Speed = 20; -->
 												<Equation>
 													<lefts>
-														<VariableRef name="Local1"/>
+														<VariableRef name="Speed"/>
 													</lefts>
 													<right>
-														<ConstValue value="true"/>
+														<ConstValue value="20"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/4766/5FDA/1A90/59c383191e4c"/>
+														<ed:Equation oid="!ed/5299/3D43/448/59c3b8646391"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -834,70 +715,179 @@
 									</pragmas>
 								</Transition>
 							</unless>
-							<locals>
-								<Variable name="_L2">
-									<type>
-										<NamedType>
-											<type>
-												<TypeRef name="bool"/>
-											</type>
-										</NamedType>
-									</type>
-									<pragmas>
-										<ed:Variable oid="!ed/4737/5FDA/1A90/59c382de6738"/>
-									</pragmas>
-								</Variable>
-							</locals>
-							<data>
-								<!-- Output3 = _L2; -->
-								<Equation>
-									<lefts>
-										<VariableRef name="Output3"/>
-									</lefts>
-									<right>
-										<IdExpression>
-											<path>
-												<ConstVarRef name="_L2"/>
-											</path>
-										</IdExpression>
-									</right>
-									<pragmas>
-										<ed:Equation oid="!ed/471c/5FDA/1A90/59c382b675d2"/>
-									</pragmas>
-								</Equation>
-								<!-- _L2 = Local1; -->
-								<Equation>
-									<lefts>
-										<VariableRef name="_L2"/>
-									</lefts>
-									<right>
-										<IdExpression>
-											<path>
-												<ConstVarRef name="Local1"/>
-											</path>
-										</IdExpression>
-									</right>
-									<pragmas>
-										<ed:Equation oid="!ed/4727/5FDA/1A90/59c382c3588d"/>
-									</pragmas>
-								</Equation>
-							</data>
 							<pragmas>
 								<ed:State oid="!ed/4608/5FDA/1A90/59c379b86cfa"/>
 							</pragmas>
 						</State>
 						<State name="Kick">
-							<data>
-								<StateMachine name="SM4">
-									<states>
-										<State initial="true" name="Forward">
+							<unless>
+								<Transition kind="restart">
+									<target>
+										<StateRef name="State9"/>
+									</target>
+									<condition>
+										<Present>
+											<signal>
+												<SignalRef name="KickFinishedSignal"/>
+											</signal>
+										</Present>
+									</condition>
+									<effect>
+										<Action>
+											<data>
+												<!-- Speed = -20; -->
+												<Equation>
+													<lefts>
+														<VariableRef name="Speed"/>
+													</lefts>
+													<right>
+														<ConstValue value="-20"/>
+													</right>
+													<pragmas>
+														<ed:Equation oid="!ed/540a/3D43/448/59c3bcf05226"/>
+													</pragmas>
+												</Equation>
+											</data>
 											<pragmas>
-												<ed:State oid="!ed/4a0a/5FDA/1A90/59c3976aa08"/>
+												<ed:Action oid="!ed/5400/3D43/448/59c3bcf05204"/>
+											</pragmas>
+										</Action>
+									</effect>
+									<pragmas>
+										<ed:Transition oid="!ed/53e6/3D43/448/59c3bc5a7d32"/>
+									</pragmas>
+								</Transition>
+							</unless>
+							<data>
+								<StateMachine name="Kicking">
+									<states>
+										<State initial="true" name="DriveBack">
+											<unless>
+												<Transition kind="restart">
+													<target>
+														<StateRef name="Forward"/>
+													</target>
+													<condition>
+														<Present>
+															<signal>
+																<SignalRef name="OnBallSignal"/>
+															</signal>
+														</Present>
+													</condition>
+													<effect>
+														<Action>
+															<data>
+																<!-- ArmSpeed = 50; -->
+																<Equation>
+																	<lefts>
+																		<VariableRef name="ArmSpeed"/>
+																	</lefts>
+																	<right>
+																		<ConstValue value="50"/>
+																	</right>
+																	<pragmas>
+																		<ed:Equation oid="!ed/52d2/3D43/448/59c3b8b14fa8"/>
+																	</pragmas>
+																</Equation>
+															</data>
+															<pragmas>
+																<ed:Action oid="!ed/4ff4/3D43/448/59c3a9874c5e"/>
+															</pragmas>
+														</Action>
+													</effect>
+													<pragmas>
+														<ed:Transition oid="!ed/4fe7/3D43/448/59c3a96117de"/>
+													</pragmas>
+												</Transition>
+											</unless>
+											<pragmas>
+												<ed:State oid="!ed/4fd1/3D43/448/59c3a93c58d5"/>
+											</pragmas>
+										</State>
+										<State name="Forward">
+											<unless>
+												<Transition kind="restart">
+													<target>
+														<StateRef name="Backward"/>
+													</target>
+													<condition>
+														<Present>
+															<signal>
+																<SignalRef name="KickBackwardSignal"/>
+															</signal>
+														</Present>
+													</condition>
+													<effect>
+														<Action>
+															<data>
+																<!-- ArmSpeed = -50; -->
+																<Equation>
+																	<lefts>
+																		<VariableRef name="ArmSpeed"/>
+																	</lefts>
+																	<right>
+																		<ConstValue value="-50"/>
+																	</right>
+																	<pragmas>
+																		<ed:Equation oid="!ed/5022/3D43/448/59c3a9b6407a"/>
+																	</pragmas>
+																</Equation>
+															</data>
+															<pragmas>
+																<ed:Action oid="!ed/5018/3D43/448/59c3a9b63837"/>
+															</pragmas>
+														</Action>
+													</effect>
+													<pragmas>
+														<ed:Transition oid="!ed/500f/3D43/448/59c3a9a45b1c"/>
+													</pragmas>
+												</Transition>
+											</unless>
+											<pragmas>
+												<ed:State oid="!ed/4fde/3D43/448/59c3a9532372"/>
 											</pragmas>
 										</State>
 										<State name="Backward">
+											<unless>
+												<Transition kind="restart">
+													<target>
+														<StateRef name="DriveBack"/>
+													</target>
+													<condition>
+														<Present>
+															<signal>
+																<SignalRef name="KickFinishedSignal"/>
+															</signal>
+														</Present>
+													</condition>
+													<effect>
+														<Action>
+															<data>
+																<!-- ArmSpeed = 0; -->
+																<Equation>
+																	<lefts>
+																		<VariableRef name="ArmSpeed"/>
+																	</lefts>
+																	<right>
+																		<ConstValue value="0"/>
+																	</right>
+																	<pragmas>
+																		<ed:Equation oid="!ed/52be/3D43/448/59c3b88b1bec"/>
+																	</pragmas>
+																</Equation>
+															</data>
+															<pragmas>
+																<ed:Action oid="!ed/505e/3D43/448/59c3aa8f6b19"/>
+															</pragmas>
+														</Action>
+													</effect>
+													<pragmas>
+														<ed:Transition oid="!ed/502e/3D43/448/59c3a9dc224d"/>
+													</pragmas>
+												</Transition>
+											</unless>
 											<pragmas>
-												<ed:State oid="!ed/4a13/5FDA/1A90/59c3977316f4"/>
+												<ed:State oid="!ed/5009/3D43/448/59c3a99d3caf"/>
 											</pragmas>
 										</State>
 									</states>
@@ -908,6 +898,115 @@
 							</data>
 							<pragmas>
 								<ed:State oid="!ed/49d5/5FDA/1A90/59c397312cc8"/>
+							</pragmas>
+						</State>
+						<State name="State9">
+							<unless>
+								<Transition kind="restart">
+									<target>
+										<StateRef name="Kick"/>
+									</target>
+									<condition>
+										<Present>
+											<signal>
+												<SignalRef name="OnBallSignal"/>
+											</signal>
+										</Present>
+									</condition>
+									<effect>
+										<Action>
+											<data>
+												<!-- Speed = 0; -->
+												<Equation>
+													<lefts>
+														<VariableRef name="Speed"/>
+													</lefts>
+													<right>
+														<ConstValue value="0"/>
+													</right>
+													<pragmas>
+														<ed:Equation oid="!ed/5443/3D43/448/59c3bd3765d4"/>
+													</pragmas>
+												</Equation>
+											</data>
+											<pragmas>
+												<ed:Action oid="!ed/5439/3D43/448/59c3bd37106"/>
+											</pragmas>
+										</Action>
+									</effect>
+									<pragmas>
+										<ed:Transition oid="!ed/53eb/3D43/448/59c3bc656b0a"/>
+									</pragmas>
+								</Transition>
+							</unless>
+							<until>
+								<Transition kind="restart">
+									<target>
+										<StateRef name="Stop"/>
+									</target>
+									<condition>
+										<Present>
+											<signal>
+												<SignalRef name="StopSignal"/>
+											</signal>
+										</Present>
+									</condition>
+									<effect>
+										<Action>
+											<data>
+												<!-- Speed = 0; -->
+												<Equation>
+													<lefts>
+														<VariableRef name="Speed"/>
+													</lefts>
+													<right>
+														<ConstValue value="0"/>
+													</right>
+													<pragmas>
+														<ed:Equation oid="!ed/5494/3D43/448/59c3be0c53ad"/>
+													</pragmas>
+												</Equation>
+											</data>
+											<pragmas>
+												<ed:Action oid="!ed/5216/3D43/448/59c3b7616418"/>
+											</pragmas>
+										</Action>
+									</effect>
+									<pragmas>
+										<ed:Transition oid="!ed/51a6/3D43/448/59c3b6b540d0"/>
+									</pragmas>
+								</Transition>
+							</until>
+							<pragmas>
+								<ed:State oid="!ed/53cb/3D43/448/59c3bc51444e"/>
+							</pragmas>
+						</State>
+						<State name="Free">
+							<unless>
+								<Transition kind="restart">
+									<target>
+										<StateRef name="State9"/>
+									</target>
+									<condition>
+										<!--  'StopSignal = false -->
+										<BinaryOp name="6" operator="=">
+											<operands>
+												<Present>
+													<signal>
+														<SignalRef name="StopSignal"/>
+													</signal>
+												</Present>
+												<ConstValue value="false"/>
+											</operands>
+										</BinaryOp>
+									</condition>
+									<pragmas>
+										<ed:Transition oid="!ed/54ac/3D43/448/59c3be466021"/>
+									</pragmas>
+								</Transition>
+							</unless>
+							<pragmas>
+								<ed:State oid="!ed/549d/3D43/448/59c3be34215e"/>
 							</pragmas>
 						</State>
 					</states>
@@ -977,6 +1076,166 @@
 						<ed:Emission oid="!ed/4601/5FDA/1A90/59c379934e39"/>
 					</pragmas>
 				</Emission>
+				<!--  emit 'KickForwardSignal if _L21; -->
+				<Emission>
+					<signals>
+						<SignalRef name="KickForwardSignal"/>
+					</signals>
+					<condition>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L21"/>
+							</path>
+						</IdExpression>
+					</condition>
+					<pragmas>
+						<ed:Emission oid="!ed/4c49/3D43/448/59c3a2a53a97"/>
+					</pragmas>
+				</Emission>
+				<!-- _L21 = KickForward; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="_L21"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="KickForward"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/4c51/3D43/448/59c3a2ac7564"/>
+					</pragmas>
+				</Equation>
+				<!-- _L22 = KickBackward; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="_L22"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="KickBackward"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/4cb5/3D43/448/59c3a341fa8"/>
+					</pragmas>
+				</Equation>
+				<!--  emit 'KickBackwardSignal if _L22; -->
+				<Emission>
+					<signals>
+						<SignalRef name="KickBackwardSignal"/>
+					</signals>
+					<condition>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L22"/>
+							</path>
+						</IdExpression>
+					</condition>
+					<pragmas>
+						<ed:Emission oid="!ed/4cbe/3D43/448/59c3a34f1f59"/>
+					</pragmas>
+				</Emission>
+				<!-- _L23 = ArmSpeed; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="_L23"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="ArmSpeed"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/4d15/3D43/448/59c3a3a51458"/>
+					</pragmas>
+				</Equation>
+				<!-- ArmSpeedValue = _L23; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="ArmSpeedValue"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L23"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/4d17/3D43/448/59c3a3a557fb"/>
+					</pragmas>
+				</Equation>
+				<!-- _L25 = KickFinished; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="_L25"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="KickFinished"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/5085/3D43/448/59c3aac576fe"/>
+					</pragmas>
+				</Equation>
+				<!--  emit 'KickFinishedSignal if _L25; -->
+				<Emission>
+					<signals>
+						<SignalRef name="KickFinishedSignal"/>
+					</signals>
+					<condition>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L25"/>
+							</path>
+						</IdExpression>
+					</condition>
+					<pragmas>
+						<ed:Emission oid="!ed/508e/3D43/448/59c3aacf7062"/>
+					</pragmas>
+				</Emission>
+				<!-- SpeedValue = _L26; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="SpeedValue"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="_L26"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/5170/3D43/448/59c3b65c10a5"/>
+					</pragmas>
+				</Equation>
+				<!-- _L26 = Speed; -->
+				<Equation>
+					<lefts>
+						<VariableRef name="_L26"/>
+					</lefts>
+					<right>
+						<IdExpression>
+							<path>
+								<ConstVarRef name="Speed"/>
+							</path>
+						</IdExpression>
+					</right>
+					<pragmas>
+						<ed:Equation oid="!ed/5171/3D43/448/59c3b65c3fc6"/>
+					</pragmas>
+				</Equation>
 			</data>
 			<pragmas>
 				<ed:Operator oid="!ed/43d1/60C/1310/59ad4555447d" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/5">
@@ -985,7 +1244,7 @@
 							<presentationElements>
 								<EquationGE presentable="!ed/4434/69E/2738/59ad5d5e4397">
 									<position>
-										<Point x="2170" y="13229"/>
+										<Point x="2434" y="16245"/>
 									</position>
 									<size>
 										<Size width="264" height="503"/>
@@ -993,7 +1252,7 @@
 								</EquationGE>
 								<EquationGE presentable="!ed/44c9/69E/2738/59ad61ca30c8">
 									<position>
-										<Point x="7303" y="15663"/>
+										<Point x="7567" y="18680"/>
 									</position>
 									<size>
 										<Size width="371" height="583"/>
@@ -1001,7 +1260,7 @@
 								</EquationGE>
 								<EquationGE presentable="!ed/444c/4C91/23A8/59b6334215dd">
 									<position>
-										<Point x="3678" y="11192"/>
+										<Point x="3942" y="14208"/>
 									</position>
 									<size>
 										<Size width="1773" height="1402"/>
@@ -1009,15 +1268,15 @@
 								</EquationGE>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4434/69E/2738/59ad5d5e4397" dstEquation="!ed/444c/4C91/23A8/59b6334215dd">
 									<positions>
-										<Point x="2434" y="13494"/>
-										<Point x="3016" y="13494"/>
-										<Point x="3016" y="11880"/>
-										<Point x="3678" y="11880"/>
+										<Point x="2699" y="16510"/>
+										<Point x="3281" y="16510"/>
+										<Point x="3281" y="14896"/>
+										<Point x="3942" y="14896"/>
 									</positions>
 								</Edge>
 								<EquationGE presentable="!ed/449d/494F/D94/59b6579e4550">
 									<position>
-										<Point x="3678" y="14367"/>
+										<Point x="3942" y="17383"/>
 									</position>
 									<size>
 										<Size width="1773" height="1402"/>
@@ -1025,15 +1284,15 @@
 								</EquationGE>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4434/69E/2738/59ad5d5e4397" dstEquation="!ed/449d/494F/D94/59b6579e4550">
 									<positions>
-										<Point x="2434" y="13494"/>
-										<Point x="3043" y="13494"/>
-										<Point x="3043" y="15055"/>
-										<Point x="3678" y="15055"/>
+										<Point x="2699" y="16510"/>
+										<Point x="3307" y="16510"/>
+										<Point x="3307" y="18071"/>
+										<Point x="3942" y="18071"/>
 									</positions>
 								</Edge>
 								<EquationGE presentable="!ed/44c2/494F/D94/59b657e2530b">
 									<position>
-										<Point x="7144" y="12250"/>
+										<Point x="7408" y="15266"/>
 									</position>
 									<size>
 										<Size width="371" height="582"/>
@@ -1041,7 +1300,7 @@
 								</EquationGE>
 								<EquationGE presentable="!ed/45f4/494F/D94/59b65eaae36">
 									<position>
-										<Point x="3889" y="17833"/>
+										<Point x="4154" y="20849"/>
 									</position>
 									<size>
 										<Size width="371" height="582"/>
@@ -1049,7 +1308,7 @@
 								</EquationGE>
 								<EquationGE presentable="!ed/45fa/494F/D94/59b65edd72dc">
 									<position>
-										<Point x="2355" y="17436"/>
+										<Point x="2619" y="20452"/>
 									</position>
 									<size>
 										<Size width="264" height="503"/>
@@ -1057,11 +1316,11 @@
 								</EquationGE>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/45fa/494F/D94/59b65edd72dc" dstEquation="!ed/45f4/494F/D94/59b65eaae36">
 									<positions>
-										<Point x="2619" y="17701"/>
-										<Point x="3413" y="17701"/>
-										<Point x="3413" y="17701"/>
-										<Point x="4022" y="17701"/>
-										<Point x="4022" y="17912"/>
+										<Point x="2884" y="20717"/>
+										<Point x="3678" y="20717"/>
+										<Point x="3678" y="20717"/>
+										<Point x="4286" y="20717"/>
+										<Point x="4286" y="20929"/>
 									</positions>
 								</Edge>
 								<StateMachineGE presentable="!ed/447b/5FDA/1A90/59c37765127e">
@@ -1069,7 +1328,7 @@
 										<Point x="1482" y="344"/>
 									</position>
 									<size>
-										<Size width="38576" height="10213"/>
+										<Size width="40031" height="12806"/>
 									</size>
 								</StateMachineGE>
 								<StateGE presentable="!ed/44d4/5FDA/1A90/59c378673226">
@@ -1077,7 +1336,7 @@
 										<Point x="1879" y="953"/>
 									</position>
 									<size>
-										<Size width="18018" height="8520"/>
+										<Size width="11350" height="8519"/>
 									</size>
 								</StateGE>
 								<StateMachineGE presentable="!ed/4513/5FDA/1A90/59c3788d1db5">
@@ -1118,7 +1377,7 @@
 										<Point x="978" y="1560"/>
 									</labelPos>
 									<slashPos>
-										<Point x="2725" y="1560"/>
+										<Point x="2725" y="1561"/>
 									</slashPos>
 								</TransitionGE>
 								<TransitionGE presentable="!ed/451c/5FDA/1A90/59c3788dd24">
@@ -1135,77 +1394,12 @@
 										<Point x="7832" y="8732"/>
 									</labelPos>
 									<slashPos>
-										<Point x="10028" y="8732"/>
-									</slashPos>
-								</TransitionGE>
-								<StateMachineGE presentable="!ed/458d/5FDA/1A90/59c378e8c4b">
-									<position>
-										<Point x="11748" y="2064"/>
-									</position>
-									<size>
-										<Size width="7038" height="6562"/>
-									</size>
-								</StateMachineGE>
-								<StateGE presentable="!ed/458e/5FDA/1A90/59c378e83830">
-									<position>
-										<Point x="12383" y="5741"/>
-									</position>
-									<size>
-										<Size width="4286" height="2752"/>
-									</size>
-								</StateGE>
-								<EquationGE presentable="!ed/458f/5FDA/1A90/59c378e85087">
-									<position>
-										<Point x="14737" y="6720"/>
-									</position>
-									<size>
-										<Size width="317" height="503"/>
-									</size>
-								</EquationGE>
-								<EquationGE presentable="!ed/4590/5FDA/1A90/59c378e8589b">
-									<position>
-										<Point x="13653" y="6826"/>
-									</position>
-									<size>
-										<Size width="344" height="502"/>
-									</size>
-								</EquationGE>
-								<StateGE presentable="!ed/4595/5FDA/1A90/59c378e889b">
-									<position>
-										<Point x="12250" y="2196"/>
-									</position>
-									<size>
-										<Size width="4498" height="1772"/>
-									</size>
-								</StateGE>
-								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4590/5FDA/1A90/59c378e8589b" dstEquation="!ed/458f/5FDA/1A90/59c378e85087">
-									<positions>
-										<Point x="13996" y="7091"/>
-										<Point x="14393" y="7091"/>
-										<Point x="14393" y="6985"/>
-										<Point x="14790" y="6985"/>
-									</positions>
-								</Edge>
-								<TransitionGE presentable="!ed/4599/5FDA/1A90/59c378e82c6c">
-									<positions>
-										<Point x="14314" y="3968"/>
-										<Point x="14182" y="4498"/>
-										<Point x="14182" y="5186"/>
-										<Point x="14155" y="5741"/>
-									</positions>
-									<labelSize>
-										<Size width="3678" height="318"/>
-									</labelSize>
-									<labelPos>
-										<Point x="9234" y="5081"/>
-									</labelPos>
-									<slashPos>
-										<Point x="10821" y="5080"/>
+										<Point x="10028" y="8731"/>
 									</slashPos>
 								</TransitionGE>
 								<EquationGE presentable="!ed/45d2/5FDA/1A90/59c3791f41d2">
 									<position>
-										<Point x="11827" y="12435"/>
+										<Point x="12091" y="15452"/>
 									</position>
 									<size>
 										<Size width="265" height="502"/>
@@ -1213,7 +1407,7 @@
 								</EquationGE>
 								<EquationGE presentable="!ed/45e5/5FDA/1A90/59c3796069ce">
 									<position>
-										<Point x="12991" y="12039"/>
+										<Point x="13256" y="15055"/>
 									</position>
 									<size>
 										<Size width="1772" height="1402"/>
@@ -1221,15 +1415,15 @@
 								</EquationGE>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/45d2/5FDA/1A90/59c3791f41d2" dstEquation="!ed/45e5/5FDA/1A90/59c3796069ce">
 									<positions>
-										<Point x="12091" y="12700"/>
-										<Point x="12541" y="12700"/>
-										<Point x="12541" y="12726"/>
-										<Point x="12991" y="12726"/>
+										<Point x="12356" y="15716"/>
+										<Point x="12806" y="15716"/>
+										<Point x="12806" y="15716"/>
+										<Point x="13256" y="15716"/>
 									</positions>
 								</Edge>
 								<EquationGE presentable="!ed/4601/5FDA/1A90/59c379934e39">
 									<position>
-										<Point x="15743" y="13203"/>
+										<Point x="16007" y="16219"/>
 									</position>
 									<size>
 										<Size width="370" height="582"/>
@@ -1237,7 +1431,7 @@
 								</EquationGE>
 								<StateGE presentable="!ed/4608/5FDA/1A90/59c379b86cfa">
 									<position>
-										<Point x="23019" y="3016"/>
+										<Point x="17066" y="2805"/>
 									</position>
 									<size>
 										<Size width="4525" height="4921"/>
@@ -1245,148 +1439,59 @@
 								</StateGE>
 								<TransitionGE presentable="!ed/4648/5FDA/1A90/59c37a2a6500">
 									<positions>
-										<Point x="19897" y="6429"/>
-										<Point x="21802" y="6218"/>
-										<Point x="21061" y="7170"/>
-										<Point x="23019" y="6906"/>
+										<Point x="13229" y="6429"/>
+										<Point x="14261" y="8758"/>
+										<Point x="19659" y="11748"/>
+										<Point x="21643" y="10398"/>
 									</positions>
 									<labelSize>
-										<Size width="3440" height="3493"/>
+										<Size width="3889" height="953"/>
 									</labelSize>
 									<labelPos>
-										<Point x="20664" y="7858"/>
+										<Point x="13732" y="9790"/>
 									</labelPos>
 									<slashPos>
-										<Point x="21405" y="7858"/>
+										<Point x="15320" y="9790"/>
 									</slashPos>
 								</TransitionGE>
 								<TransitionGE presentable="!ed/4655/5FDA/1A90/59c37a374201">
 									<positions>
-										<Point x="23019" y="4392"/>
-										<Point x="21114" y="3942"/>
-										<Point x="21855" y="3942"/>
-										<Point x="19897" y="3493"/>
+										<Point x="17066" y="4207"/>
+										<Point x="15161" y="3731"/>
+										<Point x="14923" y="3387"/>
+										<Point x="13229" y="3493"/>
 									</positions>
 									<labelSize>
 										<Size width="3651" height="3175"/>
 									</labelSize>
 									<labelPos>
-										<Point x="20426" y="2169"/>
+										<Point x="13997" y="793"/>
 									</labelPos>
 									<slashPos>
-										<Point x="21167" y="2169"/>
+										<Point x="14738" y="794"/>
 									</slashPos>
 								</TransitionGE>
-								<EquationGE presentable="!ed/471c/5FDA/1A90/59c382b675d2">
-									<position>
-										<Point x="25612" y="4842"/>
-									</position>
-									<size>
-										<Size width="318" height="502"/>
-									</size>
-								</EquationGE>
-								<EquationGE presentable="!ed/4727/5FDA/1A90/59c382c3588d">
-									<position>
-										<Point x="24315" y="4868"/>
-									</position>
-									<size>
-										<Size width="344" height="503"/>
-									</size>
-								</EquationGE>
-								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4727/5FDA/1A90/59c382c3588d" dstEquation="!ed/471c/5FDA/1A90/59c382b675d2">
-									<positions>
-										<Point x="24659" y="5133"/>
-										<Point x="25162" y="5133"/>
-										<Point x="25162" y="5106"/>
-										<Point x="25665" y="5106"/>
-									</positions>
-								</Edge>
-								<EquationGE presentable="!ed/4864/5FDA/1A90/59c3853f2b75">
-									<position>
-										<Point x="14790" y="7673"/>
-									</position>
-									<size>
-										<Size width="318" height="503"/>
-									</size>
-								</EquationGE>
-								<EquationGE presentable="!ed/4865/5FDA/1A90/59c3853f3b93">
-									<position>
-										<Point x="13494" y="7699"/>
-									</position>
-									<size>
-										<Size width="344" height="503"/>
-									</size>
-								</EquationGE>
-								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4865/5FDA/1A90/59c3853f3b93" dstEquation="!ed/4864/5FDA/1A90/59c3853f2b75">
-									<positions>
-										<Point x="13838" y="7964"/>
-										<Point x="14340" y="7964"/>
-										<Point x="14340" y="7964"/>
-										<Point x="14843" y="7964"/>
-									</positions>
-								</Edge>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/45e5/5FDA/1A90/59c3796069ce" dstEquation="!ed/4601/5FDA/1A90/59c379934e39">
 									<positions>
-										<Point x="14764" y="12726"/>
-										<Point x="15875" y="12726"/>
-										<Point x="15875" y="13282"/>
+										<Point x="15028" y="15743"/>
+										<Point x="16140" y="15743"/>
+										<Point x="16140" y="16298"/>
 									</positions>
 								</Edge>
-								<EquationGE presentable="!ed/4597/5FDA/1A90/59c378e8626f">
-									<position>
-										<Point x="14923" y="3307"/>
-									</position>
-									<size>
-										<Size width="318" height="502"/>
-									</size>
-								</EquationGE>
-								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4596/5FDA/1A90/59c378e8626" dstEquation="!ed/4597/5FDA/1A90/59c378e8626f">
-									<positions>
-										<Point x="13494" y="3493"/>
-										<Point x="14288" y="3493"/>
-										<Point x="14288" y="3572"/>
-										<Point x="14975" y="3572"/>
-									</positions>
-								</Edge>
-								<EquationGE presentable="!ed/4596/5FDA/1A90/59c378e8626">
-									<position>
-										<Point x="13150" y="3228"/>
-									</position>
-									<size>
-										<Size width="344" height="503"/>
-									</size>
-								</EquationGE>
-								<TransitionGE presentable="!ed/4592/5FDA/1A90/59c378e860b">
-									<positions>
-										<Point x="16669" y="7673"/>
-										<Point x="18680" y="6191"/>
-										<Point x="17754" y="4339"/>
-										<Point x="16748" y="3069"/>
-									</positions>
-									<labelSize>
-										<Size width="4260" height="635"/>
-									</labelSize>
-									<labelPos>
-										<Point x="16351" y="4366"/>
-									</labelPos>
-									<slashPos>
-										<Point x="18283" y="4366"/>
-									</slashPos>
-								</TransitionGE>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/444c/4C91/23A8/59b6334215dd" dstEquation="!ed/44c2/494F/D94/59b657e2530b">
 									<positions>
-										<Point x="5450" y="11880"/>
-										<Point x="7276" y="11880"/>
-										<Point x="7276" y="12330"/>
+										<Point x="5715" y="14896"/>
+										<Point x="7541" y="14896"/>
+										<Point x="7541" y="15346"/>
 									</positions>
 								</Edge>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/449d/494F/D94/59b6579e4550" dstEquation="!ed/44c9/69E/2738/59ad61ca30c8">
 									<positions>
-										<Point x="5450" y="15055"/>
-										<Point x="6350" y="15055"/>
-										<Point x="6350" y="15055"/>
-										<Point x="7435" y="15055"/>
-										<Point x="7435" y="15743"/>
+										<Point x="5715" y="18071"/>
+										<Point x="6615" y="18071"/>
+										<Point x="6615" y="18071"/>
+										<Point x="7699" y="18071"/>
+										<Point x="7699" y="18759"/>
 									</positions>
 								</Edge>
 								<EquationGE presentable="!ed/4987/5FDA/1A90/59c391c866a">
@@ -1415,36 +1520,298 @@
 								</Edge>
 								<StateGE presentable="!ed/49d5/5FDA/1A90/59c397312cc8">
 									<position>
-										<Point x="29236" y="2381"/>
+										<Point x="28125" y="741"/>
 									</position>
 									<size>
-										<Size width="9367" height="7329"/>
+										<Size width="12859" height="9604"/>
 									</size>
 								</StateGE>
 								<StateMachineGE presentable="!ed/4a0f/5FDA/1A90/59c3976b6f08">
 									<position>
-										<Point x="29977" y="3228"/>
+										<Point x="28654" y="1720"/>
 									</position>
 									<size>
-										<Size width="7223" height="6006"/>
+										<Size width="11536" height="8202"/>
 									</size>
 								</StateMachineGE>
-								<StateGE presentable="!ed/4a0a/5FDA/1A90/59c3976aa08">
+								<EquationGE presentable="!ed/4c49/3D43/448/59c3a2a53a97">
 									<position>
-										<Point x="33073" y="3678"/>
+										<Point x="25612" y="15981"/>
+									</position>
+									<size>
+										<Size width="371" height="582"/>
+									</size>
+								</EquationGE>
+								<EquationGE presentable="!ed/4c51/3D43/448/59c3a2ac7564">
+									<position>
+										<Point x="24553" y="15187"/>
+									</position>
+									<size>
+										<Size width="265" height="502"/>
+									</size>
+								</EquationGE>
+								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4c51/3D43/448/59c3a2ac7564" dstEquation="!ed/4c49/3D43/448/59c3a2a53a97">
+									<positions>
+										<Point x="24818" y="15452"/>
+										<Point x="25744" y="15452"/>
+										<Point x="25744" y="15478"/>
+										<Point x="25744" y="15478"/>
+										<Point x="25744" y="16060"/>
+									</positions>
+								</Edge>
+								<EquationGE presentable="!ed/4cb5/3D43/448/59c3a341fa8">
+									<position>
+										<Point x="24606" y="17463"/>
+									</position>
+									<size>
+										<Size width="264" height="503"/>
+									</size>
+								</EquationGE>
+								<EquationGE presentable="!ed/4cbe/3D43/448/59c3a34f1f59">
+									<position>
+										<Point x="26009" y="17886"/>
+									</position>
+									<size>
+										<Size width="371" height="582"/>
+									</size>
+								</EquationGE>
+								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4cb5/3D43/448/59c3a341fa8" dstEquation="!ed/4cbe/3D43/448/59c3a34f1f59">
+									<positions>
+										<Point x="24871" y="17727"/>
+										<Point x="26141" y="17727"/>
+										<Point x="26141" y="17965"/>
+									</positions>
+								</Edge>
+								<EquationGE presentable="!ed/4d15/3D43/448/59c3a3a51458">
+									<position>
+										<Point x="34158" y="16801"/>
+									</position>
+									<size>
+										<Size width="265" height="503"/>
+									</size>
+								</EquationGE>
+								<EquationGE presentable="!ed/4d17/3D43/448/59c3a3a557fb">
+									<position>
+										<Point x="35454" y="16775"/>
+									</position>
+									<size>
+										<Size width="317" height="503"/>
+									</size>
+								</EquationGE>
+								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/4d15/3D43/448/59c3a3a51458" dstEquation="!ed/4d17/3D43/448/59c3a3a557fb">
+									<positions>
+										<Point x="34422" y="17066"/>
+										<Point x="34660" y="17066"/>
+										<Point x="34660" y="17066"/>
+										<Point x="35507" y="17066"/>
+									</positions>
+								</Edge>
+								<StateGE presentable="!ed/4fd1/3D43/448/59c3a93c58d5">
+									<position>
+										<Point x="31697" y="2725"/>
 									</position>
 									<size>
 										<Size width="1852" height="1773"/>
 									</size>
 								</StateGE>
-								<StateGE presentable="!ed/4a13/5FDA/1A90/59c3977316f4">
+								<StateGE presentable="!ed/4fde/3D43/448/59c3a9532372">
 									<position>
-										<Point x="33099" y="6085"/>
+										<Point x="35666" y="5583"/>
 									</position>
 									<size>
 										<Size width="1852" height="1773"/>
 									</size>
 								</StateGE>
+								<TransitionGE presentable="!ed/4fe7/3D43/448/59c3a96117de">
+									<positions>
+										<Point x="33549" y="3704"/>
+										<Point x="36036" y="3625"/>
+										<Point x="36539" y="4763"/>
+										<Point x="36592" y="5583"/>
+									</positions>
+									<labelSize>
+										<Size width="4313" height="953"/>
+									</labelSize>
+									<labelPos>
+										<Point x="34264" y="2354"/>
+									</labelPos>
+									<slashPos>
+										<Point x="36089" y="2354"/>
+									</slashPos>
+								</TransitionGE>
+								<StateGE presentable="!ed/5009/3D43/448/59c3a99d3caf">
+									<position>
+										<Point x="33390" y="7964"/>
+									</position>
+									<size>
+										<Size width="1852" height="1773"/>
+									</size>
+								</StateGE>
+								<TransitionGE presentable="!ed/500f/3D43/448/59c3a9a45b1c">
+									<positions>
+										<Point x="36671" y="7355"/>
+										<Point x="36698" y="7752"/>
+										<Point x="35190" y="8387"/>
+										<Point x="35242" y="8811"/>
+									</positions>
+									<labelSize>
+										<Size width="3969" height="953"/>
+									</labelSize>
+									<labelPos>
+										<Point x="35984" y="8599"/>
+									</labelPos>
+									<slashPos>
+										<Point x="38153" y="8599"/>
+									</slashPos>
+								</TransitionGE>
+								<TransitionGE presentable="!ed/502e/3D43/448/59c3a9dc224d">
+									<positions>
+										<Point x="33390" y="8678"/>
+										<Point x="31485" y="8705"/>
+										<Point x="32703" y="5503"/>
+										<Point x="32650" y="4498"/>
+									</positions>
+									<labelSize>
+										<Size width="5080" height="953"/>
+									</labelSize>
+									<labelPos>
+										<Point x="28390" y="7488"/>
+									</labelPos>
+									<slashPos>
+										<Point x="30957" y="7488"/>
+									</slashPos>
+								</TransitionGE>
+								<EquationGE presentable="!ed/5085/3D43/448/59c3aac576fe">
+									<position>
+										<Point x="24633" y="19447"/>
+									</position>
+									<size>
+										<Size width="264" height="503"/>
+									</size>
+								</EquationGE>
+								<EquationGE presentable="!ed/508e/3D43/448/59c3aacf7062">
+									<position>
+										<Point x="25797" y="19923"/>
+									</position>
+									<size>
+										<Size width="371" height="582"/>
+									</size>
+								</EquationGE>
+								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/5085/3D43/448/59c3aac576fe" dstEquation="!ed/508e/3D43/448/59c3aacf7062">
+									<positions>
+										<Point x="24897" y="19711"/>
+										<Point x="25929" y="19711"/>
+										<Point x="25929" y="20003"/>
+									</positions>
+								</Edge>
+								<EquationGE presentable="!ed/5170/3D43/448/59c3b65c10a5">
+									<position>
+										<Point x="16034" y="18918"/>
+									</position>
+									<size>
+										<Size width="318" height="503"/>
+									</size>
+								</EquationGE>
+								<EquationGE presentable="!ed/5171/3D43/448/59c3b65c3fc6">
+									<position>
+										<Point x="14949" y="19024"/>
+									</position>
+									<size>
+										<Size width="344" height="503"/>
+									</size>
+								</EquationGE>
+								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/5171/3D43/448/59c3b65c3fc6" dstEquation="!ed/5170/3D43/448/59c3b65c10a5">
+									<positions>
+										<Point x="15293" y="19288"/>
+										<Point x="15690" y="19288"/>
+										<Point x="15690" y="19182"/>
+										<Point x="16087" y="19182"/>
+									</positions>
+								</Edge>
+								<TransitionGE presentable="!ed/51a6/3D43/448/59c3b6b540d0">
+									<positions>
+										<Point x="23442" y="3969"/>
+										<Point x="22463" y="2937"/>
+										<Point x="21749" y="1826"/>
+										<Point x="21590" y="3545"/>
+									</positions>
+									<labelSize>
+										<Size width="2514" height="2223"/>
+									</labelSize>
+									<labelPos>
+										<Point x="19976" y="741"/>
+									</labelPos>
+									<slashPos>
+										<Point x="20691" y="741"/>
+									</slashPos>
+								</TransitionGE>
+								<StateGE presentable="!ed/53cb/3D43/448/59c3bc51444e">
+									<position>
+										<Point x="22939" y="3969"/>
+									</position>
+									<size>
+										<Size width="1852" height="2672"/>
+									</size>
+								</StateGE>
+								<TransitionGE presentable="!ed/53e6/3D43/448/59c3bc5a7d32">
+									<positions>
+										<Point x="28125" y="4471"/>
+										<Point x="26617" y="3810"/>
+										<Point x="25347" y="4974"/>
+										<Point x="24791" y="5212"/>
+									</positions>
+									<labelSize>
+										<Size width="4180" height="318"/>
+									</labelSize>
+									<labelPos>
+										<Point x="23204" y="1429"/>
+									</labelPos>
+									<slashPos>
+										<Point x="25532" y="1429"/>
+									</slashPos>
+								</TransitionGE>
+								<TransitionGE presentable="!ed/53eb/3D43/448/59c3bc656b0a">
+									<positions>
+										<Point x="24791" y="6033"/>
+										<Point x="25876" y="6535"/>
+										<Point x="27358" y="5186"/>
+										<Point x="28125" y="5054"/>
+									</positions>
+									<labelSize>
+										<Size width="4048" height="2223"/>
+									</labelSize>
+									<labelPos>
+										<Point x="23866" y="7726"/>
+									</labelPos>
+									<slashPos>
+										<Point x="25850" y="7726"/>
+									</slashPos>
+								</TransitionGE>
+								<StateGE presentable="!ed/549d/3D43/448/59c3be34215e">
+									<position>
+										<Point x="21643" y="9499"/>
+									</position>
+									<size>
+										<Size width="1852" height="1773"/>
+									</size>
+								</StateGE>
+								<TransitionGE presentable="!ed/54ac/3D43/448/59c3be466021">
+									<positions>
+										<Point x="23495" y="10319"/>
+										<Point x="24897" y="9657"/>
+										<Point x="24421" y="8149"/>
+										<Point x="23918" y="6641"/>
+									</positions>
+									<labelSize>
+										<Size width="1535" height="370"/>
+									</labelSize>
+									<labelPos>
+										<Point x="24897" y="9737"/>
+									</labelPos>
+									<slashPos>
+										<Point x="25638" y="9737"/>
+									</slashPos>
+								</TransitionGE>
 							</presentationElements>
 						</NetDiagram>
 					</diagrams>
