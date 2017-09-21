@@ -728,7 +728,7 @@
 									<condition>
 										<Present>
 											<signal>
-												<SignalRef name="KickFinishedSignal"/>
+												<SignalRef name="OffBallSignal"/>
 											</signal>
 										</Present>
 									</condition>
@@ -851,7 +851,7 @@
 											<unless>
 												<Transition kind="restart">
 													<target>
-														<StateRef name="DriveBack"/>
+														<StateRef name="State11"/>
 													</target>
 													<condition>
 														<Present>
@@ -888,6 +888,11 @@
 											</unless>
 											<pragmas>
 												<ed:State oid="!ed/5009/3D43/448/59c3a99d3caf"/>
+											</pragmas>
+										</State>
+										<State name="State11">
+											<pragmas>
+												<ed:State oid="!ed/5508/3D43/448/59c3c08b7634"/>
 											</pragmas>
 										</State>
 									</states>
@@ -1441,8 +1446,8 @@
 									<positions>
 										<Point x="13229" y="6429"/>
 										<Point x="14261" y="8758"/>
-										<Point x="19659" y="11748"/>
-										<Point x="21643" y="10398"/>
+										<Point x="17939" y="11165"/>
+										<Point x="19923" y="9816"/>
 									</positions>
 									<labelSize>
 										<Size width="3889" height="953"/>
@@ -1668,8 +1673,8 @@
 									<positions>
 										<Point x="33390" y="8678"/>
 										<Point x="31485" y="8705"/>
-										<Point x="32703" y="5503"/>
-										<Point x="32650" y="4498"/>
+										<Point x="31141" y="8308"/>
+										<Point x="31089" y="7303"/>
 									</positions>
 									<labelSize>
 										<Size width="5080" height="953"/>
@@ -1789,7 +1794,7 @@
 								</TransitionGE>
 								<StateGE presentable="!ed/549d/3D43/448/59c3be34215e">
 									<position>
-										<Point x="21643" y="9499"/>
+										<Point x="19923" y="8916"/>
 									</position>
 									<size>
 										<Size width="1852" height="1773"/>
@@ -1797,21 +1802,29 @@
 								</StateGE>
 								<TransitionGE presentable="!ed/54ac/3D43/448/59c3be466021">
 									<positions>
-										<Point x="23495" y="10319"/>
-										<Point x="24897" y="9657"/>
+										<Point x="21775" y="9737"/>
+										<Point x="23178" y="9075"/>
 										<Point x="24421" y="8149"/>
 										<Point x="23918" y="6641"/>
 									</positions>
 									<labelSize>
-										<Size width="1535" height="370"/>
+										<Size width="3016" height="1588"/>
 									</labelSize>
 									<labelPos>
-										<Point x="24897" y="9737"/>
+										<Point x="23760" y="9525"/>
 									</labelPos>
 									<slashPos>
-										<Point x="25638" y="9737"/>
+										<Point x="24950" y="9525"/>
 									</slashPos>
 								</TransitionGE>
+								<StateGE presentable="!ed/5508/3D43/448/59c3c08b7634">
+									<position>
+										<Point x="29951" y="5530"/>
+									</position>
+									<size>
+										<Size width="1852" height="1773"/>
+									</size>
+								</StateGE>
 							</presentationElements>
 						</NetDiagram>
 					</diagrams>
