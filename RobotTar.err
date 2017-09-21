@@ -1,0 +1,6 @@
+*** Post-namespace Error (ERR_512): Multiple flow definition
+  at file , line -1, character -1
+  at path StateMachine/SM3:DriveAndCount:<1>Speed=
+ Flow Speed is defined more than once
+  at file , line -1, character -1
+  at path StateMachine/SM3:DriveAndCount:Drive:Init:<1>Speed=
