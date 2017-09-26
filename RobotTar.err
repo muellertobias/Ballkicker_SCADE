@@ -1,4 +1,4 @@
 *** Post-namespace Warning (WAR_507): Uncaught signal
-  at file D:/Development/Scadet/RobotTar/Operator1.xscade, line 159, character 17
-  at path StateMachine/KickForwardSignal/
- The signal KickForwardSignal is never received
+  at file D:/Development/Scadet/RobotTar/Operator1.xscade, line 164, character 17
+  at path StateMachine/KickMoveFinishedSignal/
+ The signal KickMoveFinishedSignal is never received
