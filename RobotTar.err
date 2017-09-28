@@ -1,0 +1,33 @@
+*** Causality Error (ERR_400): Causality error
+  at file , line -1, character -1
+  at path StateMachine/RobotTar:Free:<1>_kicks=
+ the definition of shared flow _kicks depends on flow Counting ;
+  at file D:/Development/Scadet/RobotTar/Operator1.xscade, line 107, character 19
+  at path StateMachine/Counting/
+ the definition of flow Counting depends on shared flow Counting via a control
+ block ;
+  at file D:/Development/Scadet/RobotTar/Operator1.xscade, line 107, character 19
+  at path StateMachine/Counting/
+ the definition of shared flow Counting depends on shared flow Counting via a
+ control block ;
+  at file , line -1, character -1
+  at path StateMachine/RobotTar:Count:CountSM:Init:<1>Counting=
+ the definition of shared flow Counting depends on the strong guards of state
+ Init via the control context ;
+  at file , line -1, character -1
+  at path StateMachine/RobotTar:Count:CountSM:Init:
+ the strong guards of state Init depend on the state of automaton RobotTar ;
+  at file , line -1, character -1
+  at path StateMachine/RobotTar:Search:
+ the state of automaton RobotTar depends on the strong guards of state Search ;
+  at file , line -1, character -1
+  at path StateMachine/RobotTar:Search:
+ the strong guards of state Search depend on flow _kicks ;
+  at file D:/Development/Scadet/RobotTar/Operator1.xscade, line 137, character 19
+  at path StateMachine/_kicks/
+ the definition of flow _kicks depends on shared flow _kicks via a control
+ block ;
+  at file D:/Development/Scadet/RobotTar/Operator1.xscade, line 137, character 19
+  at path StateMachine/_kicks/
+ the definition of shared flow _kicks depends on shared flow _kicks via a
+ control block ;

@@ -536,7 +536,7 @@
 														<ConstValue value="-20"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/519f/3D43/448/59c3b6912540"/>
+														<ed:Equation oid="!ed/4607/5CA5/14A8/59ccfa80426f"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -570,16 +570,16 @@
 									<effect>
 										<Action>
 											<data>
-												<!-- Speed = 20; -->
+												<!-- Speed = 25; -->
 												<Equation>
 													<lefts>
 														<VariableRef name="Speed"/>
 													</lefts>
 													<right>
-														<ConstValue value="20"/>
+														<ConstValue value="25"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/4aa3/2FFE/8A0/59ca37fd685e"/>
+														<ed:Equation oid="!ed/462d/5CA5/14A8/59ccfbe82acf"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -613,16 +613,16 @@
 									<effect>
 										<Action>
 											<data>
-												<!-- Speed = -20; -->
+												<!-- Speed = -25; -->
 												<Equation>
 													<lefts>
 														<VariableRef name="Speed"/>
 													</lefts>
 													<right>
-														<ConstValue value="-20"/>
+														<ConstValue value="-25"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/46f7/158A/22EC/59ca5e94a5d"/>
+														<ed:Equation oid="!ed/464a/5CA5/14A8/59ccfbf9abf"/>
 													</pragmas>
 												</Equation>
 												<!-- _kicks =  last '_kicks - 1; -->
@@ -632,7 +632,7 @@
 													</lefts>
 													<right>
 														<!--  last '_kicks - 1 -->
-														<BinaryOp name="1" operator="-">
+														<BinaryOp name="4" operator="-">
 															<operands>
 																<Last>
 																	<variable>
@@ -644,7 +644,7 @@
 														</BinaryOp>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/46f8/158A/22EC/59ca5e941e5e"/>
+														<ed:Equation oid="!ed/464b/5CA5/14A8/59ccfbf95a91"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -664,6 +664,44 @@
 						</State>
 						<State name="Search">
 							<unless>
+								<Transition kind="restart">
+									<target>
+										<StateRef name="Release"/>
+									</target>
+									<condition>
+										<Present>
+											<signal>
+												<SignalRef name="StopSignal"/>
+											</signal>
+										</Present>
+									</condition>
+									<effect>
+										<Action>
+											<data>
+												<!-- Speed = 20; -->
+												<Equation>
+													<lefts>
+														<VariableRef name="Speed"/>
+													</lefts>
+													<right>
+														<ConstValue value="20"/>
+													</right>
+													<pragmas>
+														<ed:Equation oid="!ed/45f3/5CA5/14A8/59ccfa746191"/>
+													</pragmas>
+												</Equation>
+											</data>
+											<pragmas>
+												<ed:Action oid="!ed/4514/5CA5/14A8/59ccf84872bb"/>
+											</pragmas>
+										</Action>
+									</effect>
+									<pragmas>
+										<ed:Transition oid="!ed/44fc/5CA5/14A8/59ccf82e71b5"/>
+									</pragmas>
+								</Transition>
+							</unless>
+							<until>
 								<Transition kind="restart">
 									<target>
 										<StateRef name="Kick"/>
@@ -687,7 +725,7 @@
 														<ConstValue value="0"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/4541/21E9/27C4/59ca5031492d"/>
+														<ed:Equation oid="!ed/469a/5CA5/14A8/59ccfc2d2541"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -700,15 +738,13 @@
 										<ed:Transition oid="!ed/53eb/3D43/448/59c3bc656b0a"/>
 									</pragmas>
 								</Transition>
-							</unless>
-							<until>
 								<Transition kind="restart">
 									<target>
 										<StateRef name="Finish"/>
 									</target>
 									<condition>
 										<!-- _kicks = 0 -->
-										<BinaryOp name="13" operator="=">
+										<BinaryOp name="19" operator="=">
 											<operands>
 												<IdExpression>
 													<path>
@@ -764,13 +800,13 @@
 													</lefts>
 													<right>
 														<!-- if (Counting = 5 or Counting = 2) then (2) else (1) -->
-														<IfThenElseOp name="1">
+														<IfThenElseOp name="3">
 															<if>
 																<!-- Counting = 5 or Counting = 2 -->
-																<NAryOp name="1" operator="or">
+																<NAryOp name="3" operator="or">
 																	<operands>
 																		<!-- Counting = 5 -->
-																		<BinaryOp name="8" operator="=">
+																		<BinaryOp name="16" operator="=">
 																			<operands>
 																				<IdExpression>
 																					<path>
@@ -781,7 +817,7 @@
 																			</operands>
 																		</BinaryOp>
 																		<!-- Counting = 2 -->
-																		<BinaryOp name="9" operator="=">
+																		<BinaryOp name="17" operator="=">
 																			<operands>
 																				<IdExpression>
 																					<path>
@@ -811,7 +847,19 @@
 														</IfThenElseOp>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/4713/158A/22EC/59ca5f2c67da"/>
+														<ed:Equation oid="!ed/463b/5CA5/14A8/59ccfbf47c56"/>
+													</pragmas>
+												</Equation>
+												<!-- Speed = -25; -->
+												<Equation>
+													<lefts>
+														<VariableRef name="Speed"/>
+													</lefts>
+													<right>
+														<ConstValue value="-25"/>
+													</right>
+													<pragmas>
+														<ed:Equation oid="!ed/463c/5CA5/14A8/59ccfbf47f3f"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -903,7 +951,7 @@
 														<ConstValue value="20"/>
 													</right>
 													<pragmas>
-														<ed:Equation oid="!ed/4679/158A/22EC/59ca5ddc5552"/>
+														<ed:Equation oid="!ed/45e8/5CA5/14A8/59ccfa7029a5"/>
 													</pragmas>
 												</Equation>
 											</data>
@@ -1163,7 +1211,7 @@
 										<Point x="1508" y="4630"/>
 									</labelPos>
 									<slashPos>
-										<Point x="3255" y="4630"/>
+										<Point x="3254" y="4630"/>
 									</slashPos>
 								</TransitionGE>
 								<TransitionGE presentable="!ed/451c/5FDA/1A90/59c3788dd24">
@@ -1180,7 +1228,7 @@
 										<Point x="10981" y="6668"/>
 									</labelPos>
 									<slashPos>
-										<Point x="13177" y="6668"/>
+										<Point x="13176" y="6668"/>
 									</slashPos>
 								</TransitionGE>
 								<EquationGE presentable="!ed/4601/5FDA/1A90/59c379934e39">
@@ -1230,7 +1278,7 @@
 										<Point x="10742" y="1587"/>
 									</labelPos>
 									<slashPos>
-										<Point x="12012" y="1587"/>
+										<Point x="12012" y="1588"/>
 									</slashPos>
 								</TransitionGE>
 								<Edge leftVarIndex="1" rightExprIndex="1" srcEquation="!ed/444c/4C91/23A8/59b6334215dd" dstEquation="!ed/44c2/494F/D94/59b657e2530b">
@@ -1295,7 +1343,7 @@
 										<Point x="14235" y="5397"/>
 									</labelPos>
 									<slashPos>
-										<Point x="15531" y="5397"/>
+										<Point x="15531" y="5398"/>
 									</slashPos>
 								</TransitionGE>
 								<StateGE presentable="!ed/53cb/3D43/448/59c3bc51444e">
@@ -1320,7 +1368,7 @@
 										<Point x="22331" y="4286"/>
 									</labelPos>
 									<slashPos>
-										<Point x="24209" y="4287"/>
+										<Point x="24209" y="4286"/>
 									</slashPos>
 								</TransitionGE>
 								<TransitionGE presentable="!ed/53eb/3D43/448/59c3bc656b0a">
@@ -1362,7 +1410,7 @@
 										<Point x="16086" y="10134"/>
 									</labelPos>
 									<slashPos>
-										<Point x="18626" y="10134"/>
+										<Point x="18627" y="10134"/>
 									</slashPos>
 								</TransitionGE>
 								<EquationGE presentable="!ed/468d/2FFE/8A0/59ca2a3812f9">
@@ -1426,7 +1474,7 @@
 										<Point x="6165" y="2646"/>
 									</labelPos>
 									<slashPos>
-										<Point x="7647" y="2646"/>
+										<Point x="7646" y="2646"/>
 									</slashPos>
 								</TransitionGE>
 								<StateGE presentable="!ed/4581/158A/22EC/59ca5454363">
@@ -1439,8 +1487,8 @@
 								</StateGE>
 								<TransitionGE presentable="!ed/459c/158A/22EC/59ca546e2dbf">
 									<positions>
-										<Point x="17568" y="2487"/>
-										<Point x="16933" y="3757"/>
+										<Point x="17568" y="3625"/>
+										<Point x="16960" y="3413"/>
 										<Point x="16457" y="3784"/>
 										<Point x="16007" y="3757"/>
 									</positions>
@@ -1448,10 +1496,10 @@
 										<Size width="4048" height="1588"/>
 									</labelSize>
 									<labelPos>
-										<Point x="14922" y="1429"/>
+										<Point x="14631" y="1508"/>
 									</labelPos>
 									<slashPos>
-										<Point x="16880" y="1429"/>
+										<Point x="16589" y="1508"/>
 									</slashPos>
 								</TransitionGE>
 								<StateGE presentable="!ed/4663/158A/22EC/59ca5dd7158b">
@@ -1477,6 +1525,23 @@
 									</labelPos>
 									<slashPos>
 										<Point x="20664" y="5609"/>
+									</slashPos>
+								</TransitionGE>
+								<TransitionGE presentable="!ed/44fc/5CA5/14A8/59ccf82e71b5">
+									<positions>
+										<Point x="22410" y="6324"/>
+										<Point x="22410" y="3889"/>
+										<Point x="20929" y="3863"/>
+										<Point x="19420" y="3836"/>
+									</positions>
+									<labelSize>
+										<Size width="2831" height="2540"/>
+									</labelSize>
+									<labelPos>
+										<Point x="20769" y="2222"/>
+									</labelPos>
+									<slashPos>
+										<Point x="21510" y="2222"/>
 									</slashPos>
 								</TransitionGE>
 							</presentationElements>

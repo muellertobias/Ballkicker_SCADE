@@ -215,9 +215,27 @@ height: 0.5cm;
 <BODY>
 
 
-<DIV class="Header">Tuesday September 26 2017 16:09:15</DIV><DIV class="Title">Result of check for model RobotTar</DIV>
+<DIV class="Header">Thursday September 28 2017 15:41:52</DIV><DIV class="Title">Result of check for model RobotTar</DIV>
 <HR style="width: 14cm; text-align: center;">
-<DIV class="DocumentInfo">No error detected.</DIV><HR style="width: 14cm; text-align: center;">
+<DIV class="DocumentInfo">
+<SPAN class="DocumentInfo" style="color: rgb(255,0,0);">1 error(s) detected</SPAN> - <SPAN class="DocumentInfo" style="color: rgb(255,128,0);">0 warning(s) detected</SPAN></DIV>
+<DIV class="BodyText" style="padding-bottom: 12pt;"><table style="width: 100%;" ><TBODY>
+<TR><TH class="TableHeadingCell">Category</TH>
+<TH class="TableHeadingCell">Code</TH>
+<TH class="TableHeadingCell">Message</TH>
+</TR><TR><TD class="TableCell" style="" rowspan="2">Causality Error</TD>
+<TD class="TableCell" style="" rowspan="2"><SPAN class="TableCell" style="color: rgb(255,0,0);">ERR_400</SPAN></TD>
+<TD class="TableCell" style="border-bottom: 0px hidden;"><B>Causality error</B><B> at </B><A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; font-weight: bold; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/RobotTar:Free:<1>_kicks=">StateMachine/RobotTar:Free:&lt;1&gt;_kicks=</A></TD>
+</TR><TR><TD class="TableCell" style="border-top: 0px hidden;"><DIV class="TableCell" style="padding-left: 0.5cm;">
+the definition of shared flow _kicks depends on flow Counting ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/Counting/">StateMachine/Counting/</A>) the definition of flow Counting depends on shared flow Counting via a control<BR>
+block ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/Counting/">StateMachine/Counting/</A>) the definition of shared flow Counting depends on shared flow Counting via a<BR>
+control block ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/RobotTar:Count:CountSM:Init:<1>Counting=">StateMachine/RobotTar:Count:CountSM:Init:&lt;1&gt;Counting=</A>) the definition of shared flow Counting depends on the strong guards of state<BR>
+Init via the control context ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/RobotTar:Count:CountSM:Init:">StateMachine/RobotTar:Count:CountSM:Init:</A>) the strong guards of state Init depend on the state of automaton RobotTar ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/RobotTar:Search:">StateMachine/RobotTar:Search:</A>) the state of automaton RobotTar depends on the strong guards of state Search ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/RobotTar:Search:">StateMachine/RobotTar:Search:</A>) the strong guards of state Search depend on flow _kicks ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/_kicks/">StateMachine/_kicks/</A>) the definition of flow _kicks depends on shared flow _kicks via a control<BR>
+block ; (<A class="Hyperlink" style="text-align: left; vertical-align:middle; font-size: 9pt; padding-left: 0.1cm; padding-right: 0.1cm;" HREF="studio:SC:LOCATE_PATH#RobotTar.etp#StateMachine/_kicks/">StateMachine/_kicks/</A>) the definition of shared flow _kicks depends on shared flow _kicks via a<BR>
+control block ;</DIV>
+</TD>
+</TR></TBODY></TABLE></DIV>
+<HR style="width: 14cm; text-align: center;">
 <DIV class="EndOfDocument">End of document.</DIV>
 </BODY>
 </HTML>
